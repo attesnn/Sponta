@@ -7,9 +7,10 @@ import FormField from '../components/FormField'
 import CustomButton from '../components/CustomButton'
 import { Link } from 'expo-router'
 
-const SignIn = () => {
+const SignUp = () => {
 
   const [form, setform] = useState({
+    username:'',
     email: '',
     password: ''
   })
@@ -25,8 +26,16 @@ const SignIn = () => {
           <Image source={images.logo}
           resizeMode='contain' className="w-[115px] h-[35px]"/>
           <Text className="text-2xl text-white text-semibold mt-10 font-psemibold">
-            Log into Sponta
+            Sign up to Sponta
           </Text>
+          <FormField 
+            title="Username"
+            value={form.username}
+            handleChangeText={(e) => setform({...form, 
+            username: e})}
+            otherStyles="mt-7"
+
+          />
           <FormField 
             title="Email"
             value={form.email}
@@ -43,14 +52,14 @@ const SignIn = () => {
             otherStyles="mt-7"
           />
           <CustomButton 
-          title="Sign In"
+          title="Sign up"
           handlePress={submit}
           containerStyles="mt-7"
           isLoading={isSubmitting}
           />
           <View className="justify-center pt-5 flex-row gap-2"> 
-            <Text className="text-white font-pmedium">Don't have an account?</Text>
-            <Link href="/sign-up" className="text-secondary-200 font-pmedium">Sign Up</Link>
+            <Text className="text-white font-pmedium">Have an account already?</Text>
+            <Link href="/sign-in" className="text-secondary-200 font-pmedium">Sign in</Link>
               
           </View>
         </View>
@@ -60,4 +69,4 @@ const SignIn = () => {
   )
 }
 
-export default SignIn
+export default SignUp
